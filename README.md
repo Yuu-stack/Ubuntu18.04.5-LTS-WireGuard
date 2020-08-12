@@ -29,7 +29,17 @@
 
 # 01.サーバー側でのWireGuardのセットアップ
 
-少し前までは 18.04 だとリポジトリを追加する必要がありましたが  
+少し前までは 18.04 だとリポジトリを追加する必要がありましたが下記コマンドを実行すると現在はしたの様に案内されます.    
 > <s>$ sudo add-apt-repository ppa:wireguard/wireguard </s>  
 > <s>$ sudo apt update </s>  
 > <s>$ sudo apt install wireguard </s>  
+
+> If you're reading this because you're following an online tutorial on  
+> installing WireGuard, please contact the authors to request that they  
+> simplify their instructions to simply.  
+> 
+>     `$ sudo apt install wireguard`  
+> 
+> This PPA is no longer required for WireGuard. Press CTRL+C, and do not  
+> proceed with adding it.  
+
