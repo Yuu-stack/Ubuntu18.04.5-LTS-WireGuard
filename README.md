@@ -45,14 +45,14 @@
 
 `$ sudo apt update && sudo apt install wireguard`
 
-これでインストールはできました. セットアップをしていきます.  
+セットアップをしていきます.  
 
-#まずはサーバー.  
+#サーバーのセットアップ  
 
 `$ wg genkey | sudo tee server.key | wg pubkey > server.pub`  
 
 これで秘密鍵と公開鍵がいっきにつくれます。  
-wg genkeyもwg pubkeyも標準出力されるが、念のためファイル化  
+wg genkeyもwg pubkeyも標準出力されますが、念のためファイル化  
 
 
     $ sudo cat server.key server.pub
@@ -65,6 +65,7 @@ wg genkeyもwg pubkeyも標準出力されるが、念のためファイル化
 `$ sudo chmod 600 server.key `  
 
 # 02.クライアントPC側でのWireGuardのセットアップ  
+
 つぎはクライアント 今回は Mac から接続します  
 まずは Homebrew で WireGuard をインストール  
 
