@@ -93,25 +93,30 @@ wg genkeyもwg pubkeyも標準出力されますが、念のためファイル�
 `$ sudo vim /etc/wireguard/wg0.conf`
 中身は  
 
-    [Interface]                                                                    
-    PrivateKey = cPwR3oTYkXQMftAfyo7nfCCx/pKNOOc7OxETBaukL3U=  //server側で作成した`server.key`
-    Address = 192.168.1.1/24  //serverに設定するIPアドレス
-    ListenPort = 51820        //サーバー側のポート
+    [Interface]     
+    //server側で作成した`server.key`
+    PrivateKey = cPwR3oTYkXQMftAfyo7nfCCx/pKNOOc7OxETBaukL3U=  
+    //serverに設定するIPアドレス
+    Address = 10.200.0.1/24
+    //サーバー側のポート
+    ListenPort = 51820
     SaveConfig = true
     PostUp = iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o     eth0 -j MASQUERADE; ip6tables -A FORWARD -o %i     ACCEPT; ip6tables -t nat -A     POSTROUTING -o eth0 -j MASQUERADE
     PostDown = iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING     -o eth0 -j MASQUERADE; ip6tables -D FORWARD -o %i -j ACCEPT; ip6tables -t nat -    D POSTROUTING -o eth0 -j MASQUERADE
     
     [Peer]
-    PublicKey = JB9uqhP3g9jYP+dripsztCEKTk+nCRPN7JwvK81kRSQ=  //クライアント側で作成した`client.pub`
-    AllowedIPs = 192.168.1.2/24                               //クライアントに設定するIPアドレス
+    //クライアント側で作成した`client.pub`
+    PublicKey = JB9uqhP3g9jYP+dripsztCEKTk+nCRPN7JwvK81kRSQ= 
+    //クライアントに設定するIPアドレス
+    AllowedIPs = 10.200.0.2/24  
 
 
 
 
 [Interface]はサーバーの設定で、[Peer]はクライアントの設定です。  
-今回は WireGuard に192.168.1.0/24のサブネットを割り当てて、  
-サーバーのインターフェイスに192.168.1.1、  
-クライアントに192.168.1.2/24を割り当てることにする。   
+今回は WireGuard に`10.200.0.0/24`のサブネットを割り当てて、  
+サーバーのインターフェイスに`10.200.0.1/24`、  
+クライアントに`10.200.0.2/24`を割り当てることにする。   
 
 PostUpとPostDownは WireGuard が起動しているあいだだけ、  
 iptablesの IP マスカレードをする設定です。  
@@ -157,6 +162,10 @@ ufwの場合は
     $ sudo ufw status numbered # 現在の設定を確認する
     
 あとは、じっさいに WireGuard を起動していきます。  
+
+初回起動する際は下記を実行してください.  
+`sudo wg-quick up /etc/wireguard/wg0.conf`
+
 起動と停止には、wg-quickというラッパースクリプトを使用します.  
 systemdのユニットファイルはwg-quick@インターフェイス名です.  
 
@@ -182,7 +191,7 @@ ipコマンドでインターフェイス(wg0)が生成されていることを�
         link/ether b8:27:eb:9d:33:9d brd ff:ff:ff:ff:ff:ff
     4: wg0: <POINTOPOINT,NOARP,UP,LOWER_UP> mtu 1420 qdisc noqueue state UNKNOWN group default qlen 1000
         link/none 
-        inet 192.168.1.1/24 scope global wg0
+        inet 10.200.0.1/24 scope global wg0
            valid_lft forever preferred_lft forever
            
 
@@ -208,12 +217,12 @@ Add Tunnel...から設定をかきこむ。
 
     [Interface]
     PrivateKey = cEliXXsM26Ng7YdEYsMzYdt/nBfRi0TaQ8+DmllhUk8=
-    Address = 192.168.1.2/32
+    Address = 10.200.0.2/32
     DNS = 1.1.1.1
     
     [Peer]
     PublicKey = LdUheSydosMTVpiCwQ6DhX9AL0WgS/B6my7268l20VE=
-    Endpoint = example.com:51820
+    Endpoint = サーバーのIP:51820
     AllowedIPs = 0.0.0.0/0,::/0
     
 サーバーとくらべると、だいぶシンプル.  
@@ -225,7 +234,7 @@ DNSのところは Cloudflare の Public DNS を指定してるが、
 Google の8.8.8.8でもいいし、 LAN 内のやつでも大丈夫です.  
 
 AllowedIPsを上記のようにすると、すべてのトラフィックをサーバーにながします  
-もちろん10.0.0.0/24のように、特定の宛先を指定してもよいです  
+もちろん10.200.0.0/24のように、特定の宛先を指定してもよいです  
 
 保存をしてActivateボタンを押せば Handshake がおこなわれて接続されます!  
 おつかれさまでしたー！
