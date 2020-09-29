@@ -1,8 +1,13 @@
 # Ubuntu18.04.5-LTS-WireGuard  
 
 `ubuntu-18.04.4-preinstalled-server-arm64+raspi3.img.xz`を使用しています.  
- https://ubuntu.com/download/raspberry-pi
- http://cdimage.ubuntu.com/releases/18.04/release/ubuntu-18.04.4-preinstalled-server-arm64+raspi3.img.xz
+ https://ubuntu.com/download/raspberry-pi  
+ http://cdimage.ubuntu.com/releases/18.04/release/ubuntu-18.04.4-preinstalled-server-arm64+raspi3.img.xz  
+ 
+ 参考文献:  
+ https://www.virment.com/how-to-setup-wireguard-server-and-connect-from-client/  
+ https://gihyo.jp/admin/serial/01/ubuntu-recipe/0614?page=1  
+ https://nadja.jp/posts/constructed_wireguard_vpn_server_on_ubuntu/  
  
  
 下記で local IP固定化済み.   
