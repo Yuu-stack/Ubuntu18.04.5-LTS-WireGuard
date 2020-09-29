@@ -251,4 +251,6 @@ https://shimobepapa.hatenadiary.jp/entry/2016/12/02/125415
 このような記事もあり、なりすましを防ぐために認証局の証明書とサーバ証明書の発行もしたほうがいいようです.  
 
 
-
+またRaspberryPi4+Ubuntu１８.04のLinux karnel
+を使用した　wireguard-dkms で問題が起きているようです.  
+https://blog.n-z.jp/blog/2020-06-10-wireguard-dkms-error.html
