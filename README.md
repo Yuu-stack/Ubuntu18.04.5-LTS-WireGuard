@@ -8,6 +8,7 @@
  https://www.virment.com/how-to-setup-wireguard-server-and-connect-from-client/  
  https://gihyo.jp/admin/serial/01/ubuntu-recipe/0614?page=1  
  https://nadja.jp/posts/constructed_wireguard_vpn_server_on_ubuntu/  
+ https://www.ivpn.net/knowledgebase/255/Linux---Autostart-WireGuard-in-systemd.html  
  
  
 下記で local IP固定化済み.   
@@ -176,6 +177,8 @@ systemdのユニットファイルはwg-quick@インターフェイス名です.
 
     $ sudo systemctl enable wg-quick@wg0
     $ sudo systemctl start wg-quick@wg0
+    
+WireGuardのコマンドについては<https://www.ivpn.net/knowledgebase/255/Linux---Autostart-WireGuard-in-systemd.html>を参考にしてください.
 
 ipコマンドでインターフェイス(wg0)が生成されていることを確認します.  
 
