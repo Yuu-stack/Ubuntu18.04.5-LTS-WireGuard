@@ -244,7 +244,13 @@ Google の8.8.8.8でもいいし、 LAN 内のやつでも大丈夫です.
 AllowedIPsを上記のようにすると、すべてのトラフィックをサーバーにながします  
 もちろん10.200.0.0/24のように、特定の宛先を指定してもよいです  
 
-保存をしてActivateボタンを押せば Handshake がおこなわれて接続されます!  
-おつかれさまでした！
+保存をしてActivateボタンを押せば Handshake がおこなわれて接続されるようです.  
+上記はほぼ  https://nadja.jp/posts/constructed_wireguard_vpn_server_on_ubuntu/  から拝借しました.  
+私の環境は外部へポート開放できる環境がないためローカル環境のみで確認しています.  
+https://shimobepapa.hatenadiary.jp/entry/2016/12/02/125415  
+このような記事もあり、なりすましを防ぐために認証局の証明書とサーバ証明書の発行もしたほうがいいようです.  
 
 
+# 01.サーバー側でのWireGuardのセットアップおいて
+# 01.サーバー側でのWireGuardのセットアップ
+# 01.サーバー側でのWireGuardのセットアップ
